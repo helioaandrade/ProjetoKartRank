@@ -12,10 +12,14 @@ namespace Dominio
         {
         }
 
+        public string   NomePiloto      { get; set; }
         public int      NumeroVolta     { get; set; }
-        public DateTime Hora            { get; set; }
-        public DateTime TempoGasto      { get; set; }
-        public DateTime VelocidadeMedia { get; set; }
+        public TimeSpan Hora            { get; set; }
+        public TimeSpan TempoGasto      { get; set; }
+        public TimeSpan VelocidadeMedia { get; set; }
+
+      
     }
       
 }
+

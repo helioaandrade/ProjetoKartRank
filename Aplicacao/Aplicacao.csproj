@@ -41,7 +41,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Aplicacao.cs" />
+    <Compile Include="Construtor\DadosLogConstrutor.cs" />
+    <Compile Include="Construtor\PilotoConstrutor.cs" />
+    <Compile Include="Construtor\ResultadoCorridaConstrutor.cs" />
+    <Compile Include="Construtor\VoltaConstrutor.cs" />
+    <Compile Include="DadosLogAplicacao.cs" />
+    <Compile Include="PilotoAplicacao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultadoCorridaAplicacao.cs" />
+    <Compile Include="VoltaAplicacao.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Dominio\Dominio.csproj">
+      <Project>{54389f44-64be-4661-8ef3-c50976c6b080}</Project>
+      <Name>Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Repositorio\Repositorio.csproj">
+      <Project>{fd1e5b6b-3ccc-4979-aa72-a773f6820933}</Project>
+      <Name>Repositorio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

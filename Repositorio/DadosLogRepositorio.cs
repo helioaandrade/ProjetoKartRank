@@ -5,29 +5,24 @@ using System.Text;
 using System.Threading.Tasks;
 using Dominio;
 using Dominio.Interface;
+using Dominio.Servicos;
 
 namespace Repositorio
 {
-    public class DadosLogRepositorio : IDadosLog<DadosLog>
+    public class DadosLogRepositorio  : IDadosLog<DadosLog>
     {
+        private IList<DadosLog> _DadosLog = new List<DadosLog>();
+
         public DadosLogRepositorio()
         {
-
+             
         }
-
-        public DadosLog Detalhe(DadosLog pDadosLog)
+        public IList<DadosLog> Listar()
         {
-            throw new NotImplementedException();
+            Dominio.Servicos.AcessoDados dados = new Dominio.Servicos.AcessoDados();
+
+            return dados.ObterDadosLog();
         }
 
-        public IList<DadosLog> Listar(DadosLog pDadosLog)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Salvar(DadosLog pDadosLog)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

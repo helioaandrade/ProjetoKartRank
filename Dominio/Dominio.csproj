@@ -44,10 +44,16 @@
     <Compile Include="Dominio.cs" />
     <Compile Include="Interface\IDadosLog.cs" />
     <Compile Include="Interface\IPiloto.cs" />
+    <Compile Include="Interface\IResultadoCorrida.cs" />
     <Compile Include="Interface\IVolta.cs" />
     <Compile Include="Piloto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultadoCorrida.cs" />
+    <Compile Include="Servicos\AcessoDados\DadosLog.cs" />
     <Compile Include="Volta.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Servicos\ArquivosLog\arquivoLog.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

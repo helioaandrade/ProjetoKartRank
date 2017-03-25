@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Dominio;
 using Dominio.Interface;
 
@@ -10,22 +8,40 @@ namespace Repositorio
 {
     public class VoltaRepositorio : IVolta<Volta>
     {
+        private IList<DadosLog> _DadosLog = new List<DadosLog>();
+
         public VoltaRepositorio()
         {
-
+            // Simular acesso a base de dados de log
+            Dominio.Servicos.AcessoDados dados = new Dominio.Servicos.AcessoDados();
+            _DadosLog = dados.ObterDadosLog();
         }
 
-        public Volta Detalhe(Volta pVolta)
+        public Volta Detalhe(Volta param)
         {
-            throw new NotImplementedException();
-        }
+             throw new NotImplementedException();
+         }
 
-        public IList<Volta> Lista(Volta pVolta)
+        public IList<Volta> Listar(Volta param)
         {
-            throw new NotImplementedException();
+               IList<Volta> lstVolta = new List<Volta>();
+            
+                foreach (var dado in _DadosLog)
+                {
+                        Volta infoVolta = new Volta();
+                        infoVolta.NomePiloto = dado.NomePiloto;
+                        infoVolta.NumeroVolta = dado.NumeroVolta;
+                        infoVolta.TempoGasto = dado.Tempo;
+                        infoVolta.Hora = dado.Hora;
+                        infoVolta.VelocidadeMedia = dado.VelocidadeMedia;
+
+                        lstVolta.Add(infoVolta);
+                 }
+
+            return lstVolta.OrderByDescending(x => x.NumeroVolta).ThenBy(x => x.Hora).ToList();
         }
 
-        public bool Salvar(Volta pVolta)
+        public bool Salvar(Volta param)
         {
             throw new NotImplementedException();
         }

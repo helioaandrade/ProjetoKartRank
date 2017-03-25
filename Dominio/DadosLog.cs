@@ -12,10 +12,27 @@ namespace Dominio
     public class DadosLog
     {
         public int NumeroVolta { get; set; }
-        public string NumeroPiloto { get; set; }
+    
         public string NomePiloto { get; set; }
-        public DateTime Hora { get; set; }
-        public DateTime Tempo { get; set; }
-        public DateTime VelocidadeMedia { get; set; }
+        
+        public TimeSpan Hora { get; set; }  
+
+        public TimeSpan Tempo { get; set; }
+     
+        public TimeSpan VelocidadeMedia { get; set; }
+
+        public List<DadosLog> Listar()
+        {
+          
+            return new List<DadosLog>
+          {
+                      
+
+          };
+        }
+
+
     }
+
+
 }
