@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Aplicacao;
 using Aplicacao.Construtor;
 using Dominio;
+ 
 
 namespace Console
 {
@@ -16,7 +17,6 @@ namespace Console
       
         static void Main(string[] args)
         {
-               
                         DadosLogAplicacao appDadosLog;
                         PilotoAplicacao appPiloto;
                         VoltaAplicacao appVolta;
@@ -47,21 +47,43 @@ namespace Console
                             TempoGastodoPilotoAposVencedor(lstPiloto);
 
                         // Montar resultado
-                         sb.AppendLine(result1);
-                         sb.AppendLine(result2);
-                         sb.AppendLine(result3);
+                         string res1 = "Melhor volta de cada piloto" +Environment.NewLine;
+                         sb.AppendLine(res1 + result1);
 
-                        // Exivir no console ou gravar em uma arquivo
+                        string res2 = "Melhor volta da corrida" + Environment.NewLine;
+                        sb.AppendLine(res2 + result2);
+                     
+                        string res3 = "Velocidade média de cada piloto du rante toda corrida	" + Environment.NewLine;
+                        sb.AppendLine(res3 + result3);
+               
+                        appVolta = VoltaAPlicacaoConstrutor.VoltaAplicacao();
+
+                        var lsVolta = appVolta.Listar(new Volta());
+
+                        string result4 = ObterListaVoltas(lsVolta);
+             
+                        string res4 = "Ordem de chegada dos pilotos em cada volta" + Environment.NewLine;
+                        sb.AppendLine(res4 + result4);
 
                         string resultado = sb.ToString();
+
+                        // Exibir no console ou gravar em uma arquivo
+
+                         System.Console.WriteLine(resultado);
+
+                         System.Console.ReadKey();
+
+                        // Gravar resultado em arquivo
 
                         GravarArquivoLog("resultado.txt", resultado);
 
             #endregion
 
         }
- 
 
+        #region Métodos
+
+     
         /// <summary>
         /// Descobrir a melhor volta de cada piloto
         /// </summary>
@@ -139,6 +161,29 @@ namespace Console
             return sb.ToString();
         }
 
+
+        public static string ObterListaVoltas(IList<Volta> lsVolta)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach (Volta volta in lsVolta)
+            {
+                TimeSpan tsTempo = TimeSpan.FromSeconds(volta.TempoGasto.TotalMilliseconds / 1000);
+
+                TimeSpan tsHora = TimeSpan.FromSeconds(volta.Hora.TotalMilliseconds / 1000);
+
+                sb.AppendFormat("{0,-20} Hora[{1}] Volta[{2}] Tempo[{3}]",
+                                 volta.NomePiloto,
+                                 tsHora.ToString(),
+                                 volta.NumeroVolta,
+                                 tsTempo.ToString());
+                sb.AppendLine();
+
+            }
+
+            return sb.ToString();
+
+        }
         public static void GravarArquivoLog(string nomeArquivo, string pMensagem)
         {
             var encoding = new System.Text.UTF8Encoding(encoderShouldEmitUTF8Identifier: false); //Encoding.ASCII
@@ -152,5 +197,7 @@ namespace Console
             }
 
         }
+
+        #endregion
     }
 }

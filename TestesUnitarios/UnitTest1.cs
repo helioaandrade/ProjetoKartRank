@@ -1,15 +1,19 @@
-﻿using Aplicacao;
+﻿using System;
+using Aplicacao;
 using Aplicacao.Construtor;
 using Dominio;
  
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+ 
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using NUnit.Framework;
 
 namespace TestesUnitarios
 {
-    [TestClass()]
+
+    [TestFixture]
     public class UnitTestClass
     {
 
@@ -25,44 +29,81 @@ namespace TestesUnitarios
        
         }
 
-      
 
         /// <summary>
-        /// Descobrir a melhor volta de cada piloto
+        /// Obter dados do log que é usado como entrada de dados
         /// </summary>
-        [TestMethod()]
-        public void MelhorVoltaPiloto()
+        [Test]
+        public void ObterDadosLog()
         {
-        
+            bool result = false;
+ 
+            // Cenário
+ 
+            PilotoAplicacao appPiloto;
+    
+            appPiloto = PilotoAplicacaoConstrutor.PilotoAplicacao();
+
+            // Ação
+
+            // Obter lista de pilotos com suas respectivas voltas
+            var lstPiloto = appPiloto.Listar(new Piloto());
+ 
+            // Validação
+            result = lstPiloto.Count > 0;
+
+            Assert.AreEqual(true, result);
         }
 
         /// <summary>
-        /// Descobrir a melhor volta da corrida
+        /// Obter lista de pilotos
         /// </summary>
-        [TestMethod()]
-        public void MelhorVoltaCorrida()
+        [Test]
+        public void ObterListaPilotos()
         {
+             bool result = false;
 
+            // Cenário
+         
+            PilotoAplicacao appPiloto;
+            
+            appPiloto = PilotoAplicacaoConstrutor.PilotoAplicacao();
+
+            // Ação
+            // Obter lista de pilotos com suas respectivas voltas
+            var lstPiloto = appPiloto.Listar(new Piloto());
+
+            // Validação
+            result = lstPiloto.Count > 0;
+
+            Assert.AreEqual(true, result);
         }
-
+           
 
         /// <summary>
-        /// Calcular a velocidade média de cada piloto durante toda corrida
+        ///  Obter resultado da corrida
         /// </summary>
-        [TestMethod()]
-        public void CalcularMediaVelocidadeCorrida()
+        [Test]
+        public void ObterResultado()
         {
+             bool result = true;
 
+            // Cenário
+
+            // Ação
+
+            // Validação
+
+            Assert.AreEqual(true, result);
         }
-
-        /// <summary>
-        /// Descobrir quanto tempo cada piloto chegou após o vencedor
-        /// </summary>
-        [TestMethod()]
-        public void TempoGastodoPiloto()
-        {
-
-        }
-
-       }
+ 
     }
+
+}
+
+         
+ 
+
+
+  
+ 

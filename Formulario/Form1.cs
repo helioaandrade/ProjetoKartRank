@@ -246,7 +246,7 @@ namespace Formulario
         }
 
         /// <summary>
-        /// Ordenar por ordem de chegar em cada volta
+        /// Ordenar por ordem de chegada em cada volta
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

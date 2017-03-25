@@ -1,0 +1,46 @@
+
+Instruções para execução do projeto KartRank
+---------------------------------------------
+
+O projeto foi criado para contemplar o padrão DDD( Domain Driven Development), ou seja desenvolvimento orientado por domínio.
+Esta abordagem tem a vantagem de dividir as responsabilidades de cada camada, a fim de tornar mais fácil a manutenção e a implementação de novas
+funcionalidades.
+
+OBS: Este projeto foi criado usando o Visual Studio 2015 Community
+
+A Solution contempla as seguintes pastas(projetos):
+
+- Aplicacao		- É nesta camada que o usuário pode acessar(no nosso caso console, formulário)
+- Dominio		- Contém as entidades Piloto, Volta e ResultadoCorrida
+- Repositorio		- Esta camada simula um acesso a base de dados( neste caso um arquivo de log contendo os dados da corrida)
+- Console		- Foi criado para testar os métodos expostos pela camada de aplicação
+- Formulário		- Projeto dem Windows Form com uma interface simples contendo alguns botões para mostrar os resultados
+
+- TestesUnitarios	- Projeto para efetuar os testes unitários
+   Foi usado o framework de Testes NUnit instalado através Nuget disponívem em  "Tools\Nuget Package Manager" do Visual Studio.
+   Para executar os testes, coloque o botão direito no projeto "TestesUnitarios" e selecionar a opção "Runs Units Tests"( testes automatizados)
+   ou "Debug Unit Tests"(caso queira debugar os testes) e vai 
+   abrir uma tela com a lista de métodos que foram criados para realização dos testes;
+   
+   Os métodos de testes são:
+   - ObterDadosLog
+   - ObterListaPilotos
+   - ObterResultado
+     
+   os testes são executados em 3 passos:
+    -Passo 1 - Definição do cenário	
+	       São definidos os dados de entrada
+    -Passo 2 - Ação
+	       É chamado os métodos para retornar o resultado
+    -Passo 3 - Validação
+		È verificado se o resultado retornado está de acordo com o resultado esperado
+	       
+   
+Para executar no Modo Console
+ - Com o botão direito no Pasta Console, selecionar a opção "Set as Startup Project" que vai fazer com que este projeto seja executado no momento do Build da Solution.
+ 
+ Obs: Os resultados serão exibidos no consolte e gravados no arquivo "Resultado.txt" no caminho "..\KartRank\Console\bin" 
+ 
+Para executar no Modo Formulário
+ - Com o botão direito no Pasta Console, selecionar a opção "Set as Startup Project" e após Build será exibido um tela com vários botões.
+ 
