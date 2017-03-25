@@ -9,35 +9,38 @@ namespace Aplicacao
     {
        
         private readonly IResultadoCorrida<ResultadoCorrida> repositorio;
-        private ResultadoCorridaRepositorio resultadoCorridaRepositorio;
+   
 
         #region Construtor
 
-        public ResultadoCorridaAplicacao(ResultadoCorrida repo)
+        public ResultadoCorridaAplicacao(ResultadoCorridaRepositorio repo)
         {
-             
+            repositorio= repo;
         }
 
-        public ResultadoCorridaAplicacao(ResultadoCorridaRepositorio resultadoCorridaRepositorio)
-        {
-            this.resultadoCorridaRepositorio = resultadoCorridaRepositorio;
-        }
+
         #endregion
-
+        
         #region Métodos
-        public bool Salvar(ResultadoCorrida param)
+        public IList<Piloto> TempoGastoPilotoAposVencedor()
         {
-            return repositorio.Salvar(param);
+           return repositorio.TempoGastoPilotoAposVencedor();
         }
 
-        public IList<ResultadoCorrida> Listar(ResultadoCorrida param)
+        public IList<ResultadoCorrida> ResultadoFinal()
         {
-            return repositorio.Listar(param);
+            return repositorio.ResultadoFinal();
         }
 
-        public ResultadoCorrida Detalhe(ResultadoCorrida param)
+        public IList<Piloto> MelhorVoltaPiloto()
         {
-            return repositorio.Detalhe(param);
+            return repositorio.MelhorVoltaPiloto();
+        }
+
+
+        public IList<DadosLog> MelhorVoltaCorrida()
+        {
+            return repositorio.MelhorVoltaCorrida();
         }
         #endregion
     }

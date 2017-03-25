@@ -16,7 +16,8 @@ namespace Formulario
 {
     public partial class Form1 : Form
     {
-          
+        const string traco = "--------------------------------------------------------------------------------------------";
+
         public Form1()
         {
 
@@ -112,20 +113,30 @@ namespace Formulario
         public static string ObterListaVoltas(IList<Volta> lsVolta)
         {
             StringBuilder sb = new StringBuilder();
-              
+
+            lsVolta = lsVolta.Where(x => x.NumeroVolta == 4).OrderBy(x => x.Hora).ToList();
+
+            TimeSpan p1 = lsVolta[0].Hora;  // Hora de chegada do vencedor
+
+            sb.AppendLine("Posição     Nome Piloto         Tempo Após Vencedor");
+            sb.AppendLine(traco);
+
+            int posicao = 1;
             foreach (Volta volta in lsVolta)
             {
                  TimeSpan tsTempo = TimeSpan.FromSeconds(volta.TempoGasto.TotalMilliseconds / 1000);
 
                 TimeSpan tsHora = TimeSpan.FromSeconds(volta.Hora.TotalMilliseconds / 1000);
 
-                sb.AppendFormat("{0,-20} Hora[{1}] Volta[{2}] Tempo[{3}]", 
+                TimeSpan tsAposVencedor = TimeSpan.FromSeconds(tsHora.Subtract(p1).TotalMilliseconds / 1000);
+
+                sb.AppendFormat("{0,-10} {1,-20} {2,-15}", 
+                                 posicao ,
                                  volta.NomePiloto,
-                                 tsHora.ToString(),
-                                 volta.NumeroVolta, 
-                                 tsTempo.ToString());
+                                 posicao > 1 ? tsAposVencedor.ToString() : string.Empty);
                 sb.AppendLine();
-                 
+
+                posicao++;
             }
 
             return sb.ToString();
@@ -242,17 +253,6 @@ namespace Formulario
 
         private void button6_Click(object sender, EventArgs e)
         {
- 
-        }
-
-        /// <summary>
-        /// Ordenar por ordem de chegada em cada volta
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void button6_Click_1(object sender, EventArgs e)
-        {
-
             txtResultado.Text = "";
             VoltaAplicacao appVolta;
 
@@ -263,6 +263,26 @@ namespace Formulario
             string resultado = ObterListaVoltas(lsVolta);
 
             txtResultado.Text = resultado;
+        }
+
+        /// <summary>
+        /// Ordenar por ordem de chegada em cada volta
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+            txtResultado.Text = "";
+            VoltaAplicacao appVolta;
+
+            appVolta = VoltaAPlicacaoConstrutor.VoltaAplicacao();
+
+            var lsVolta = appVolta.Listar(new Volta());
+
+            string resultado = ObterListaVoltas(lsVolta);
+
+            txtResultado.Text = resultado;
+
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -307,6 +327,35 @@ Não obrigatório. Faça apenas caso se identifique com o problema ou se achar q
                 -Qtde Voltas Completadas
                 -Tempo Total de Prova
               ***********************************************************************************/
-         }
-    }
+
+    
+            StringBuilder sb = new StringBuilder();
+
+            ResultadoCorridaAplicacao appResultadoCorrida;
+
+            appResultadoCorrida = ResultadoCorridaConstrutor.ResultadoCorridaAplicacao();
+
+            var lsResultado = appResultadoCorrida.ResultadoFinal();
+
+
+            sb.AppendLine("Posição   Código/Piloto   Qtde Voltas     Tempo Gasto");
+            sb.AppendLine(traco);
+
+            foreach (var resultado in lsResultado)
+            {
+                sb.AppendFormat("{0,-10} {1}-{2,-15} {3,-10} {4,-10}",
+                                resultado.Posicao + "° Lugar",
+                                resultado.CodigoPiloto,
+                                resultado.NomePiloto,
+                                resultado.QtdeVoltasCompletadas,
+                                resultado.TempoTotalProva
+                                );
+                sb.AppendLine();
+
+            }
+            sb.AppendLine(traco);
+            txtResultado.Text = sb.ToString();
+        }
+ 
+   }
 }

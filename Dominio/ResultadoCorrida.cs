@@ -12,10 +12,10 @@ namespace Dominio
         {
                 
         }
-        public string   Posicao { get; set; }
+        public int   Posicao { get; set; }
         public string   CodigoPiloto{ get; set; }
         public string   NomePiloto { get; set; }
         public int      QtdeVoltasCompletadas{ get; set; }
-        public DateTime TempoTotalProva { get; set; }
+        public TimeSpan TempoTotalProva { get; set; }
     }
 }

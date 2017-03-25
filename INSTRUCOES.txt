@@ -1,22 +1,34 @@
 
 Instruções para execução do projeto KartRank
 ---------------------------------------------
+OBS: Este projeto foi criado usando o Visual Studio 2015 Community
 
 O projeto foi criado para contemplar o padrão DDD( Domain Driven Development), ou seja desenvolvimento orientado por domínio.
-Esta abordagem tem a vantagem de dividir as responsabilidades de cada camada, a fim de tornar mais fácil a manutenção e a implementação de novas
-funcionalidades.
-
-OBS: Este projeto foi criado usando o Visual Studio 2015 Community
+Esta abordagem tem a vantagem de dividir as responsabilidades de cada camada, a fim de tornar mais fácil a manutenção e 
+implementação de novas funcionalidades.
 
 A Solution contempla as seguintes pastas(projetos):
 
-- Aplicacao		- É nesta camada que o usuário pode acessar(no nosso caso console, formulário)
-- Dominio		- Contém as entidades Piloto, Volta e ResultadoCorrida
-- Repositorio		- Esta camada simula um acesso a base de dados( neste caso um arquivo de log contendo os dados da corrida)
-- Console		- Foi criado para testar os métodos expostos pela camada de aplicação
-- Formulário		- Projeto dem Windows Form com uma interface simples contendo alguns botões para mostrar os resultados
+- Aplicacao
+Neste projeto, o usuário usa uma interface(Projetos Console ou Formulário) para enviar os dados para a camada de aplicação, que pos vez,
+chama um objeto do domínio para executar a operação de negócio.Esta camada conhece apenas a camada de domínio. 
+Isto foi feito usando "Injeção de Dependência" através da passagem do construtor(Constructor Injection) o que possibilita o "desacoplamento"
+e remover dependências desnecessárias entre as classes.
 
-- TestesUnitarios	- Projeto para efetuar os testes unitários
+Foram criadas as entidades(Piloto, Volta e ResultadoCorrida) e uma pasta de "serviços" para obter os dados de entrada.(arquivo "DadosLog.txt")
+
+- Repositorio
+Esta camada é responsável pelo acesso aos dados e para tanto usamos, os dados obtidos da camada de serviço.
+		
+- Console
+Foi criado para testar os métodos expostos pela camada de aplicação
+
+- Formulário  
+- Igual ao "Console", só com uma interface visual em "Windows Form" visando facilitar a intereação do usuário.
+  Contém uma interface simplescom alguns botões para mostrar os resultados.
+
+- TestesUnitarios	
+   Projeto para efetuar os testes unitários
    Foi usado o framework de Testes NUnit instalado através Nuget disponívem em  "Tools\Nuget Package Manager" do Visual Studio.
    Para executar os testes, coloque o botão direito no projeto "TestesUnitarios" e selecionar a opção "Runs Units Tests"( testes automatizados)
    ou "Debug Unit Tests"(caso queira debugar os testes) e vai 
@@ -33,10 +45,9 @@ A Solution contempla as seguintes pastas(projetos):
     -Passo 2 - Ação
 	       É chamado os métodos para retornar o resultado
     -Passo 3 - Validação
-		È verificado se o resultado retornado está de acordo com o resultado esperado
+	       È verificado se o resultado retornado está de acordo com o resultado esperado
 	       
-   
-Para executar no Modo Console
+ Para executar no Modo Console
  - Com o botão direito no Pasta Console, selecionar a opção "Set as Startup Project" que vai fazer com que este projeto seja executado no momento do Build da Solution.
  
  Obs: Os resultados serão exibidos no consolte e gravados no arquivo "Resultado.txt" no caminho "..\KartRank\Console\bin" 

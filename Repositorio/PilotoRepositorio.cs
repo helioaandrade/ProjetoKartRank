@@ -39,7 +39,8 @@ namespace Repositorio
                 {
                     if (dado.NomePiloto == grupo.Key.NomePiloto)
                     {
-                         Volta infoVolta = new Volta();
+                        Volta infoVolta = new Volta();
+                        infoVolta.NomePiloto = dado.NomePiloto;
                         infoVolta.NumeroVolta = dado.NumeroVolta;
                         infoVolta.TempoGasto = dado.Tempo;
                         infoVolta.Hora = dado.Hora;
