@@ -34,6 +34,7 @@ namespace Aplicacao
 
         public IList<Piloto> MelhorVoltaPiloto()
         {
+             
             return repositorio.MelhorVoltaPiloto();
         }
 

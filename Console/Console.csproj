@@ -55,6 +55,10 @@
       <Project>{42b18982-6ffe-4cdf-bab9-f4eae0afbc86}</Project>
       <Name>Aplicacao</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Controles\Controles.csproj">
+      <Project>{74686150-dc7c-46dc-aefc-5e3dd585ef43}</Project>
+      <Name>Controles</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Dominio\Dominio.csproj">
       <Project>{54389f44-64be-4661-8ef3-c50976c6b080}</Project>
       <Name>Dominio</Name>

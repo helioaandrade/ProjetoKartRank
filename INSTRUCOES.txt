@@ -1,19 +1,29 @@
 
+-------------------------------------------------------------------
 Instruções para execução do projeto KartRank
----------------------------------------------
+-------------------------------------------------------------------
+
 OBS: Este projeto foi criado usando o Visual Studio 2015 Community
 
-O projeto foi criado para contemplar o padrão DDD( Domain Driven Development), ou seja desenvolvimento orientado por domínio.
-Esta abordagem tem a vantagem de dividir as responsabilidades de cada camada, a fim de tornar mais fácil a manutenção e 
-implementação de novas funcionalidades.
+------------------------------------
+1-Modelagem de Software do projeto
+------------------------------------
+Optei por utilizar a modelagem software seguindo o padrão DDD( Domain Driven Development), ou seja desenvolvimento orientado por domínio.
+Esta abordagem tem a vantagem de dividir as responsabilidades em camadas separadas, de modo a evitar a complexidade no desenvolvimento,e tornando a manutenção 
+mais fácil e flexível para implementar novas funcionalidades.
+  
+O Solution do projeto está dividido nas seguintes camadas e com suas respectivas pastas:
 
-A Solution contempla as seguintes pastas(projetos):
+1.1 Controles
+ Esta camada exerce o papel de uma ViewControler", que é responsável por interagir com a camada de aplicação e preparar os dados para apresentação 
+ na camada "View", que no nosso caso, seria a "Console"(Projeto Console Application") e "Formulário"(Projeto Windows Form).
+   
+1.2 Aplicacao
+Esta camada conhece apenas a camada de domínio. As chamadas à camada de aplicação são feitas usando "Injeção de Dependência",através 
+da passagem do construtor(Constructor Injection) o que possibilita o "desacoplamento" e remover dependências desnecessárias entre as classes.
 
-- Aplicacao
-Neste projeto, o usuário usa uma interface(Projetos Console ou Formulário) para enviar os dados para a camada de aplicação, que pos vez,
-chama um objeto do domínio para executar a operação de negócio.Esta camada conhece apenas a camada de domínio. 
-Isto foi feito usando "Injeção de Dependência" através da passagem do construtor(Constructor Injection) o que possibilita o "desacoplamento"
-e remover dependências desnecessárias entre as classes.
+Neste projeto, o usuário usa uma interface(Projetos Console ou Formulário) para enviar solicitar os serviços para a camada de aplicação, que pos vez,
+chama um objeto do domínio/repositório para executar a operação de negócio.
 
 Foram criadas as entidades(Piloto, Volta e ResultadoCorrida) e uma pasta de "serviços" para obter os dados de entrada
  Observações: 
@@ -23,27 +33,21 @@ Foram criadas as entidades(Piloto, Volta e ResultadoCorrida) e uma pasta de "ser
 	  <add key="NomeArquivoLog" value="Dados.txt" />
 	</appSettings>
 	
-- Repositorio
-Esta camada é responsável pelo acesso aos dados e para tanto usamos, os dados obtidos da camada de serviço.
-		
-- Console
-Foi criado para testar os métodos expostos pela camada de aplicação
+1.3 Repositorio
+Esta camada é responsável pelo acesso aos dados e para tanto usamos, os dados obtidos da camada de serviço através da leitura
+de um arquivo de log disponível no sub-diretório ArquivosLog\Dados.txt disponíveis nas pastas console e formulario.
 
-- Formulário  
-- Igual ao "Console", só com uma interface visual em "Windows Form" visando facilitar a intereação do usuário.
-  Contém uma interface simplescom alguns botões para mostrar os resultados.
-
-- TestesUnitarios	
+1.4 Testes Unitários
+ 	
    Projeto para efetuar os testes unitários
-   Foi usado o framework de Testes NUnit instalado através Nuget disponívem em  "Tools\Nuget Package Manager" do Visual Studio.
-   Para executar os testes, coloque o botão direito no projeto "TestesUnitarios" e selecionar a opção "Runs Units Tests"( testes automatizados)
-   ou "Debug Unit Tests"(caso queira debugar os testes) e vai 
-   abrir uma tela com a lista de métodos que foram criados para realização dos testes;
+   Foi usado o framework de Testes NUnit instalado através do Nuget, disponível na opção "Tools\Nuget Package Manager" do Visual Studio.
+   Para executar os testes, com o botão direito do mouse no projeto "TestesUnitarios" e selecionar a opção "Runs Units Tests"( realiza todos os testes)
+   ou "Debug Unit Tests"(caso queira debugar os testes) e vai abrir uma tela com a lista de métodos de testes criados com os respectivos resultados;
    
-   Os métodos de testes são:
+   Foi criado os métodos de testes que acessam os dados.
    - ObterDadosLog
    - ObterListaPilotos
-   - ObterResultado
+   - ObterLitaVoltas
      
    Os testes são executados em 3 passos:
     -Passo 1 - Definição do cenário	
@@ -52,13 +56,23 @@ Foi criado para testar os métodos expostos pela camada de aplicação
 	       É chamado os métodos para retornar o resultado
     -Passo 3 - Validação
 	       È verificado se o resultado retornado está de acordo com o resultado esperado
-	       
+
+-----------------------------------------------	  
+2 -Passos para Obter os Resultados
+-----------------------------------------------
+      
  Para executar no Modo Console
  - Com o botão direito no Pasta Console, selecionar a opção "Set as Startup Project" que vai fazer com que este projeto seja 
  executado no momento do Build da Solution.
  
- Obs: Os resultados serão exibidos no consolte e gravados no arquivo "Resultado.txt" no caminho "..\KartRank\Console\bin" 
+ Obs: Os resultados serão exibidos na console e gravados no arquivo "Resultado.txt" no caminho "..\KartRank\Console\bin" 
  
 Para executar no Modo Formulário
- - Com o botão direito no Pasta Console, selecionar a opção "Set as Startup Project" e após Build será exibido um tela com vários botões.
+ Com o botão direito no Pasta Console, selecionar a opção "Set as Startup Project" e após Build será exibido um tela com os seguintes botões.
+  .Ver Resultado da Corrida
+  .Melhor Volta do Piloto
+  .Melhor Volta do Piloto
+  .Velocidade Média de Cada Piloto na Corrida
+  -Descobrir quanto tempo cada piloto chegou após o vencedor
+ 
  

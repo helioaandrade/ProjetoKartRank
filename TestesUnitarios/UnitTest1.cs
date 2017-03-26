@@ -12,24 +12,20 @@ using NUnit.Framework;
 
 namespace TestesUnitarios
 {
-
-    [TestFixture]
+     [TestFixture]
     public class UnitTestClass
     {
-
-        private readonly DadosLogAplicacao appDadosLog;
-        private readonly PilotoAplicacao appPiloto;
-        private readonly VoltaAplicacao appVolta;
+        DadosLogAplicacao appDadosLog;
+        PilotoAplicacao appPiloto;
+        VoltaAplicacao appVolta;
         
         public UnitTestClass()
         {
             appDadosLog = DadosLogAplicacaoConstrutor.DadosLogAplicacao();
             appPiloto = PilotoAplicacaoConstrutor.PilotoAplicacao();
             appVolta = VoltaAPlicacaoConstrutor.VoltaAplicacao();
-       
-        }
-
-
+         }
+ 
         /// <summary>
         /// Obter dados do log que é usado como entrada de dados
         /// </summary>
@@ -66,8 +62,7 @@ namespace TestesUnitarios
             // Cenário
          
             PilotoAplicacao appPiloto;
-            
-            appPiloto = PilotoAplicacaoConstrutor.PilotoAplicacao();
+             appPiloto = PilotoAplicacaoConstrutor.PilotoAplicacao();
 
             // Ação
             // Obter lista de pilotos com suas respectivas voltas
@@ -78,21 +73,24 @@ namespace TestesUnitarios
 
             Assert.AreEqual(true, result);
         }
-           
-
+     
         /// <summary>
-        ///  Obter resultado da corrida
+        ///  Obter lista de voltas
         /// </summary>
         [Test]
-        public void ObterResultado()
+        public void ObterListaVoltas()
         {
              bool result = true;
 
             // Cenário
+             VoltaAplicacao appVolta;
+            appVolta = VoltaAPlicacaoConstrutor.VoltaAplicacao();
 
             // Ação
+            var lstVolta = appVolta.Listar(new Volta());
 
             // Validação
+            result = lstVolta.Count > 0;
 
             Assert.AreEqual(true, result);
         }

@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DadosLog.cs" />
-    <Compile Include="Dominio.cs" />
     <Compile Include="Interface\IDadosLog.cs" />
     <Compile Include="Interface\IPiloto.cs" />
     <Compile Include="Interface\IResultadoCorrida.cs" />
@@ -55,6 +54,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ArquivosLog\Dados.txt" />
+    <Content Include="Servicos\AcessoDados\Dados.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

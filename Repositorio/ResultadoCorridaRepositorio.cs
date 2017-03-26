@@ -21,6 +21,8 @@ namespace Repositorio
 
         public IList<Piloto> TempoGastoPilotoAposVencedor()
         {
+            IList<Volta> lstVolta = new VoltaRepositorio().Listar(new Volta());
+
             throw new NotImplementedException();
         }
 
@@ -75,10 +77,6 @@ namespace Repositorio
         {
             throw new NotImplementedException();
         }
-
-        public ResultadoCorrida Detalhe(ResultadoCorrida param)
-        {
-            throw new NotImplementedException();
-        }
+ 
     }
 }
