@@ -54,9 +54,6 @@
     <Compile Include="Volta.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Servicos\ArquivosLog\arquivoLog.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

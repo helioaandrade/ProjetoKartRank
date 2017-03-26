@@ -15,8 +15,14 @@ chama um objeto do domínio para executar a operação de negócio.Esta camada c
 Isto foi feito usando "Injeção de Dependência" através da passagem do construtor(Constructor Injection) o que possibilita o "desacoplamento"
 e remover dependências desnecessárias entre as classes.
 
-Foram criadas as entidades(Piloto, Volta e ResultadoCorrida) e uma pasta de "serviços" para obter os dados de entrada.(arquivo "DadosLog.txt")
-
+Foram criadas as entidades(Piloto, Volta e ResultadoCorrida) e uma pasta de "serviços" para obter os dados de entrada
+ Observações: 
+   O arquivo "Dados.txt" está gravado no sub-diretório \ArquivosLog nas pastas dos projetos Console e Formulário
+   Foi criado a chave "NomeArquivoLog" no app.config destes projetos, conforme visto abaixo:
+	<appSettings>
+	  <add key="NomeArquivoLog" value="Dados.txt" />
+	</appSettings>
+	
 - Repositorio
 Esta camada é responsável pelo acesso aos dados e para tanto usamos, os dados obtidos da camada de serviço.
 		
@@ -39,7 +45,7 @@ Foi criado para testar os métodos expostos pela camada de aplicação
    - ObterListaPilotos
    - ObterResultado
      
-   os testes são executados em 3 passos:
+   Os testes são executados em 3 passos:
     -Passo 1 - Definição do cenário	
 	       São definidos os dados de entrada
     -Passo 2 - Ação
@@ -48,7 +54,8 @@ Foi criado para testar os métodos expostos pela camada de aplicação
 	       È verificado se o resultado retornado está de acordo com o resultado esperado
 	       
  Para executar no Modo Console
- - Com o botão direito no Pasta Console, selecionar a opção "Set as Startup Project" que vai fazer com que este projeto seja executado no momento do Build da Solution.
+ - Com o botão direito no Pasta Console, selecionar a opção "Set as Startup Project" que vai fazer com que este projeto seja 
+ executado no momento do Build da Solution.
  
  Obs: Os resultados serão exibidos no consolte e gravados no arquivo "Resultado.txt" no caminho "..\KartRank\Console\bin" 
  

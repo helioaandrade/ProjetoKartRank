@@ -18,10 +18,7 @@ namespace Console
 
         static void Main(string[] args)
         {
-
-                     //    string nomeArquivo = ConfigurationManager.AppSettings["NomeArquivoLog"].ToString();
-
-                         ResultadoCorridaAplicacao appResultadoCorrida;
+                        ResultadoCorridaAplicacao appResultadoCorrida;
 
                         appResultadoCorrida = ResultadoCorridaConstrutor.ResultadoCorridaAplicacao();
                       
@@ -175,9 +172,8 @@ namespace Console
             {
                 var voltas = piloto.Voltas;
  
-                double totalMiliSegundos = piloto.Voltas.Sum(x => x.TempoGasto.TotalMilliseconds);
-
-                double media = piloto.Voltas.Average(x => x.TempoGasto.TotalMilliseconds/1000);
+              
+                double media = piloto.Voltas.Average(x => x.VelocidadeMedia.TotalMilliseconds/1000);
                 
                 TimeSpan ts = TimeSpan.FromSeconds(media);
   

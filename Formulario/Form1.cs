@@ -83,10 +83,8 @@ namespace Formulario
             foreach (Piloto piloto in lsPiloto)
             {
                 var voltas = piloto.Voltas;
-
-                double totalMiliSegundos = piloto.Voltas.Sum(x => x.TempoGasto.TotalMilliseconds);
-
-                double media = piloto.Voltas.Average(x => x.TempoGasto.TotalMilliseconds / 1000);
+  
+                double media = piloto.Voltas.Average(x => x.VelocidadeMedia.TotalMilliseconds / 1000);
 
                 TimeSpan ts = TimeSpan.FromSeconds(media);
 
