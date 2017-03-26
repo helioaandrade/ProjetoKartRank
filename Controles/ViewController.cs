@@ -154,9 +154,7 @@ namespace Controles
 
             foreach (Piloto piloto in lsPiloto)
             {
-                var voltas = piloto.Voltas;
-
-                double media = piloto.Voltas.Average(x => x.VelocidadeMedia.TotalMilliseconds / 1000);
+                 double media = piloto.Voltas.Average(x => x.VelocidadeMedia.TotalMilliseconds / 1000);
 
                 TimeSpan ts = TimeSpan.FromSeconds(media);
 

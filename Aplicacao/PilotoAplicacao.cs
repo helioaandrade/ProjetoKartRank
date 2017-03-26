@@ -18,20 +18,12 @@ namespace Aplicacao
         #endregion
 
         #region Métodos
-        public bool Salvar(Piloto param)
-        {
-            return repositorio.Salvar(param);
-        }
- 
+
         public IList<Piloto> Listar(Piloto param)
         {
             return repositorio.Listar(param);
         }
 
-        public Piloto Detalhe(Piloto param)
-        {
-            return repositorio.Detalhe(param);
-        }
         #endregion
     }
 }

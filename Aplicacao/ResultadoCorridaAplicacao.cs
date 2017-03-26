@@ -22,27 +22,11 @@ namespace Aplicacao
         #endregion
         
         #region Métodos
-        public IList<Piloto> TempoGastoPilotoAposVencedor()
-        {
-           return repositorio.TempoGastoPilotoAposVencedor();
-        }
-
+      
         public IList<ResultadoCorrida> ResultadoFinal()
         {
             return repositorio.ResultadoFinal();
         }
-
-        public IList<Piloto> MelhorVoltaPiloto()
-        {
-             
-            return repositorio.MelhorVoltaPiloto();
-        }
-
-
-        public IList<DadosLog> MelhorVoltaCorrida()
-        {
-            return repositorio.MelhorVoltaCorrida();
-        }
-        #endregion
+         #endregion
     }
 }

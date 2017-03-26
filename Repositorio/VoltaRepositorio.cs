@@ -16,11 +16,7 @@ namespace Repositorio
             Dominio.Servicos.AcessoDados dados = new Dominio.Servicos.AcessoDados();
             _DadosLog = dados.ObterDadosLog();
         }
-
-        public Volta Detalhe(Volta param)
-        {
-             throw new NotImplementedException();
-         }
+ 
 
         public IList<Volta> Listar(Volta param)
         {
@@ -41,9 +37,6 @@ namespace Repositorio
             return lstVolta.OrderByDescending(x => x.NumeroVolta).ThenBy(x => x.Hora).ToList();
         }
 
-        public bool Salvar(Volta param)
-        {
-            throw new NotImplementedException();
-        }
+      
     }
 }

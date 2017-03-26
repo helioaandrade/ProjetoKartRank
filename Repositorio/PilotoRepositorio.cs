@@ -61,17 +61,6 @@ namespace Repositorio
             else
                 return lstPiloto;
         }
-
-        public Piloto Detalhe(Piloto param)
-        {
-            return Listar(param).FirstOrDefault();
-        }
-
-        public bool Salvar(Piloto pPiloto)
-        {
-            throw new NotImplementedException();
-        }
-
-      
+           
     }
 }

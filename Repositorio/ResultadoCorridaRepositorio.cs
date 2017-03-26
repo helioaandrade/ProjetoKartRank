@@ -17,14 +17,7 @@ namespace Repositorio
             Dominio.Servicos.AcessoDados dados = new Dominio.Servicos.AcessoDados();
             _DadosLog = dados.ObterDadosLog();
         }
-         
-
-        public IList<Piloto> TempoGastoPilotoAposVencedor()
-        {
-            IList<Volta> lstVolta = new VoltaRepositorio().Listar(new Volta());
-
-            throw new NotImplementedException();
-        }
+          
 
         public IList<ResultadoCorrida> ResultadoFinal()
         {
@@ -67,16 +60,7 @@ namespace Repositorio
             return lstResultado.OrderBy(x => x.Posicao).ToList();
 
         }
-
-        public IList<DadosLog> MelhorVoltaCorrida()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IList<Piloto> MelhorVoltaPiloto()
-        {
-            throw new NotImplementedException();
-        }
+ 
  
     }
 }

@@ -18,21 +18,12 @@ namespace Aplicacao
         #endregion
 
         #region Métodos
-        public bool Salvar(Volta param)
-        {
-            return repositorio.Salvar(param);
-        }
-
+       
         public IList<Volta> Listar(Volta param)
         {
             return repositorio.Listar(param);
         }
-
-        public Volta Detalhe(Volta param)
-        {
-            return repositorio.Detalhe(param);
-        }
-
+          
         #endregion
     }
 }
