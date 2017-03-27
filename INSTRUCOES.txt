@@ -70,7 +70,7 @@ de um arquivo de log disponível no sub-diretório ArquivosLog\Dados.txt dispon�
 Para executar no Modo Formulário
  Com o botão direito no Pasta Console, selecionar a opção "Set as Startup Project" e após Build será exibido um tela com os seguintes botões.
   .Ver Resultado da Corrida
-  .Melhor Volta do Piloto
+  .Melhor Volta da Corrida
   .Melhor Volta do Piloto
   .Velocidade Média de Cada Piloto na Corrida
   -Descobrir quanto tempo cada piloto chegou após o vencedor
